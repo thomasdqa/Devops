@@ -1,0 +1,56 @@
+{% extends "base.html" %} {% block title %}Home{% endblock %} {% block content
+        %}
+        <br />
+        <h1 align="center">Admin service desk portal</h1>
+        <nav>
+           <!-- displays list of all service requests regardless of the user that created them -->
+        <ul class="list-group list-group-flush" id="user_requests">
+          {% for eachuser in service_request %}
+        <li class="list-group-item">
+          <div class="card" style="width: 60rem;">
+            <div class="card-body">
+              {% if eachuser.category_id == 1 %}
+              <h5 class="card-title">Request new account</h5>
+              {% elif eachuser.category_id == 2 %}
+              <h5 class="card-title">Password reset</h5>
+              {% else %}
+              <h5 class="card-title">other</h5>
+              {% endif %}
+              <h6 class="card-subtitle mb-2 text-muted">{{eachuser.date}}</h6>
+              <p class="card-text">{{eachuser.data}}</p>
+              {% if eachuser.status_id == 1 %}
+              <a href="#" class="card-link">open</a>
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: 33%;" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100">33%</div>
+              </div>
+              {% elif eachuser.status_id == 2 %}
+              <a href="#" class="card-link">In progress</a>
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: 66%;" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100">66%</div>
+              </div>
+              {% else %}
+              <a href="#" class="card-link">closed</a>
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: 100%;" aria-valuenow="33" aria-valuemin="100%" aria-valuemax="100">100%</div>
+              </div>
+              {% endif %}
+            </div>
+          </div>
+          <button type="button" class="close" onClick="deleteService_request({{ eachuser.id }})">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <br />
+          <!-- post request to alter the status of the request based on the button pressed below -->
+          <form method="POST">
+              <div align="center">
+                <button type="submit" class="btn btn-primary" value="2" name="service_request_status_id"id="service_request_status_id" onClick="serviceId_request({{ eachuser.id }})">Open request</button>
+                <button type="submit" class="btn btn-primary" value="3" name="service_request_status_id"id="service_request_status_id" onClick="serviceId_request2({{ eachuser.id }})">Close request</button>
+              </div>
+            </form>
+        {% endfor %}
+      </ul>
+      </div>
+     
+    </div>
+       
+        {% endblock %}

@@ -1,0 +1,28 @@
+{% extends "base.html" %} {% block title %}Home{% endblock %} {% block content
+    %}
+    <br />
+    <h1 align="center">Admin service desk portal</h1>
+    <nav>
+      <!-- displays list of all users -->
+    <ul class="list-group list-group-flush" id="user_requests">
+      {% for eachuser in dif_users %}
+    <li class="list-group-item">
+      <div class="card" style="width: 60rem;">
+        <div class="card-body">
+          <h5 class="card-title">{{eachuser.first_name}}</h5>
+          <!-- post request to alter features of users priviledges based on the button clicked below -->
+          <form method="POST">
+              <button type="submit" class="btn btn-primary"  onClick="make_user_admin({{ eachuser.id }})">Make Admin</button>
+              <button type="submit" class="btn btn-primary"  onClick="remove_user_admin({{ eachuser.id }})">Remove admin</button>
+              <button type="submit" class="btn btn-primary"  onClick="delete_User({{ eachuser.id }})">Delete User</button>
+          </form>
+        </div>
+      </div>
+      <br />
+    {% endfor %}
+  </ul>
+  </div>
+ 
+</div>
+   
+    {% endblock %}

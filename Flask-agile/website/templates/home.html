@@ -1,0 +1,68 @@
+{% extends "base.html" %} {% block title %}Home{% endblock %} {% block content
+    %}
+    <br />
+    <h1 align="center">Service desk requests</h1>
+    <ul class="list-group list-group-flush" id="user_requests">
+      <!-- extracts individual service requests from an array of all users service requests -->
+      {% for service_request in user.service_requests %}
+      <li class="list-group-item">
+        <div class="card" style="width: 60rem;">
+          <!-- presents data representing the request based on a variety of things such as category status and the data itself -->
+          <div class="card-body">
+            {% if service_request.category_id == 1 %}
+            <h5 class="card-title">Request new account</h5>
+            {% elif service_request.category_id == 2 %}
+            <h5 class="card-title">Password reset</h5>
+            {% else %}
+            <h5 class="card-title">other</h5>
+            {% endif %}
+            <h6 class="card-subtitle mb-2 text-muted">{{service_request.date}}</h6>
+            <p class="card-text">{{service_request.data}}</p>
+            {% if service_request.status_id == 1 %}
+            <a href="#" class="card-link">open</a>
+            <div class="progress">
+              <div class="progress-bar" role="progressbar" style="width: 33%;" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100">33%</div>
+            </div>
+            {% elif service_request.status_id == 2 %}
+            <a href="#" class="card-link">In progress</a>
+            <div class="progress">
+              <div class="progress-bar" role="progressbar" style="width: 66%;" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100">66%</div>
+            </div>
+            {% else %}
+            <a href="#" class="card-link">closed</a>
+            <div class="progress">
+              <div class="progress-bar" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="100%" aria-valuemax="100">100%</div>
+            </div>
+            {% endif %}
+          </div>
+          <!-- button to delete service requests -->
+        </div>
+        <button type="button" class="close" onClick="deleteService_request({{ service_request.id }})">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </li>
+
+
+      {% endfor %}
+    </ul>
+    <!-- post request to send data gathered above -->
+    <form method="POST">
+      <textarea name="service_request" id="service_request" class="form-control"></textarea>
+      <br />
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="inputGroupSelect01">Please select request type</label>
+        </div>
+        <select class="custom-select" name="service_request_categoryid"id="service_request_categoryid">
+          <option selected>Choose...</option>
+          <option value="1">Request account access</option>
+          <option value="2">Password reset</option>
+          <option value="3">Other</option>
+        </select>
+      </div>
+      <!-- button to send post request -->
+      <div align="center">
+        <button type="submit" class="btn btn-primary">Add request</button>
+      </div>
+    </form>
+    {% endblock %}
