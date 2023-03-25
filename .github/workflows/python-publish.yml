@@ -2,7 +2,8 @@ name: Pushes to Main
 
 on:
     push:
-      branches: [ master ]
+      branches:
+       - "main"
 
 jobs:
     deploy:
