@@ -27,6 +27,6 @@ jobs:
       # Scans the Python env setup by setup-python.
       - uses: pyupio/safety@2.3.4
         with:
-          api-key: ${{secrets.SAFETY_API_KEY}}
+          api-key: c8fd6fad-d84eb971-53700f9d-62f2acdd
           scan: "env"
           args: "-i 51457 -i 52495"
