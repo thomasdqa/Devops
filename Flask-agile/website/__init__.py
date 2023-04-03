@@ -40,7 +40,6 @@ def create_app():
         hashed_password = bcrypt.generate_password_hash(password + current_app.config[salt, current_app.config['BCRYPT_WORK_FACTOR']])
 
         return hashed_password
-    
     from .views import views
     from .auth import auth
 
@@ -49,7 +48,6 @@ def create_app():
     app.register_blueprint(auth, url_prefix='/')
 
    
-
     from .models import User, Service_request, Status, Category
 
     #creates database
@@ -79,3 +77,4 @@ def create_database(app):
         db.session.add(statement)
         db.session.commit()
         print('Created Database!')
+        
