@@ -17,6 +17,9 @@ jobs:
       - name: Create pip cache directory
         run: |
          mkdir -p /home/runner/.cache/pip
+      - name: Clear pip cache
+        run: |
+         sudo rm -rf /home/runner/.cache/pip
       - name: Set up Python 3.10
         uses: actions/setup-python@v3
         with:
