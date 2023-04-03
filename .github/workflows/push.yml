@@ -19,6 +19,8 @@ jobs:
         with:
           python-version: "3.10"
           cache: "pip"
+      - name: Create pip cache directory
+        run: mkdir -p /home/runner/.cache/pip
       - name: Install dependencies
         run: |
           cd Flask-agile
