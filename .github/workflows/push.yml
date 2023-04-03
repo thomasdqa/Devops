@@ -28,11 +28,11 @@ jobs:
           python3 -m pip install -r requirements.txt
       - name: Set up Test env
         run: |
-          cd app
+          cd flask-agile
           source ./scripts/set-up-test-db.sh
       - name: Run Pytest
         run: |
-          cd app
+          cd flask-agile
           LOGGING_DATABASE_PATH=database/test.db LOGGING_SECRET=$(openssl rand -hex 32) pytest "$(pwd)/test.py"
   build:
     runs-on: ubuntu-latest
@@ -41,7 +41,7 @@ jobs:
       - uses: actions/checkout@v3
       - name: Build Docker container
         run: |
-          cd app
+          cd flas-agile
           docker build -f Dockerfile -t log-service:0.0.1 .
           docker tag log-service:0.0.1 log-service:latest
   analyze:
@@ -85,7 +85,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          cd app
+          cd flask-agile
           python -m pip install -r requirements.txt
       # Scans the Python env setup by setup-python.
       - uses: pyupio/safety@2.3.4
