@@ -16,7 +16,7 @@ views = Blueprint('views', __name__)
 def load_user(user_id):
     return User.query.filter_by(first_name=user_id).first()
 
-#function to load all users from the database
+#function to load all users from the database.
 def load_all_users():
     return User.query.all()
 
