@@ -21,7 +21,7 @@ jobs:
           cache: "pip"
       - name: Install dependencies
         run: |
-          cd flask-agile
+          cd Flask-agile
           python -m pip install --upgrade pip
           python3 -m pip install pytest
           sudo apt-get install sqlite3
@@ -41,7 +41,7 @@ jobs:
       - uses: actions/checkout@v3
       - name: Build Docker container
         run: |
-          cd flask-agile
+          cd Flask-agile
           docker build -f Dockerfile -t log-service:0.0.1 .
           docker tag log-service:0.0.1 log-service:latest
   analyze:
@@ -85,7 +85,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          cd flask-agile
+          cd Flask-agile
           python -m pip install -r requirements.txt
       # Scans the Python env setup by setup-python.
       - uses: pyupio/safety@2.3.4
