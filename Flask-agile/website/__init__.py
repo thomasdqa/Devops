@@ -36,13 +36,11 @@ def create_app():
     bcrypt = Bcrypt(app)
 
     def hash_password(password):
-         salt = bcrypt.generate_salt()
-         hashed_password = bcrypt.generate_password_hash(password + current_app.config[salt, current_app.config['BCRYPT_WORK_FACTOR']])
+        salt = bcrypt.generate_salt()
+        hashed_password = bcrypt.generate_password_hash(password + current_app.config[salt, current_app.config['BCRYPT_WORK_FACTOR']])
 
-         return hashed_password
-         
-     
-        
+        return hashed_password
+    
     from .views import views
     from .auth import auth
 
@@ -75,11 +73,9 @@ def create_database(app):
     from .models import User
     #ensures database is only created when when the database name doesnt already exist
     if not path.exists('website/' + DB_NAME):
-            db.create_all(app=app)
-            #inserts an admin user to the database upon inizialisation
-            statement = User(email="test@test.com", password=generate_password_hash("1234567", method='sha256'), first_name="test", admin="true") 
-            db.session.add(statement)
-            db.session.commit()
-            print('Created Database!')
-
- 
+        db.create_all(app=app)
+        #inserts an admin user to the database upon inizialisation
+        statement = User(email="test@test.com", password=generate_password_hash("1234567", method='sha256'), first_name="test", admin="true") 
+        db.session.add(statement)
+        db.session.commit()
+        print('Created Database!')
