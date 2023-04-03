@@ -40,9 +40,11 @@ jobs:
       - uses: actions/checkout@v3
       - name: Build Docker container
         run: |
-          cd Flask-agile
-          docker build -f Dockerfile -t log-service:0.0.1 .
-          docker tag log-service:0.0.1 log-service:latest
+         cd Flask-agile
+          docker build -f Dockerfile -t my-docker-image:latest .
+      - name: Tag Docker image
+        run: |
+          docker tag my-docker-image:latest my-docker-image:0.0.1
   analyze:
     name: Analyze
     runs-on: ubuntu-latest
