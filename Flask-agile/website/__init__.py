@@ -37,7 +37,7 @@ def create_app():
 
     limiter.init_app(app)
 
-    # Bcrypt set up test
+    # Bcrypt set up test1
     bcrypt = Bcrypt(app)
 
     def hash_password(password):
