@@ -21,14 +21,14 @@ jobs:
           cache: "pip"
       - name: Install dependencies
         run: |
-          cd app
+          cd flask-agile
           python -m pip install --upgrade pip
           python3 -m pip install pytest
           sudo apt-get install sqlite3
           python3 -m pip install -r requirements.txt
       - name: Set up Test env
         run: |
-          cd app
+          cd flask-agile
           source ./scripts/set-up-test-db.sh
       - name: Run Pytest
         run: |
@@ -41,7 +41,7 @@ jobs:
       - uses: actions/checkout@v3
       - name: Build Docker container
         run: |
-          cd app
+          cd flask-agile
           docker build -f Dockerfile -t log-service:0.0.1 .
           docker tag log-service:0.0.1 log-service:latest
   analyze:

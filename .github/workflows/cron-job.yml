@@ -22,7 +22,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          cd app
+          cd flask-agile
           python -m pip install -r requirements.txt
       # Scans the Python env setup by setup-python.
       - uses: pyupio/safety@2.3.4
