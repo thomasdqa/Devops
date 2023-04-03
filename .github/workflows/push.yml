@@ -74,6 +74,8 @@ jobs:
 
   dependency-scan:
     runs-on: ubuntu-latest
+    env:
+      SAFETY_DOCKER_IMAGE: my_custom_image_name:latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
