@@ -29,7 +29,6 @@ jobs:
       - name: Set up Test env
         run: |
           cd flask-agile
-          source ./scripts/set-up-test-db.sh
       - name: Run Pytest
         run: |
           cd flask-agile
