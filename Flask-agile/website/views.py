@@ -162,7 +162,7 @@ def delete_user():
 
 @views.route('/make-user-admin', methods=['POST'])
 def make_user_admin():
-    # loads json data from corrosponding JS file
+    # loads json data from corrosponding JS file.
     user = json.loads(request.data)
     userId = user['userId']
     # matches data to a user in the databse
