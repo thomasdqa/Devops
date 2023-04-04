@@ -23,10 +23,10 @@ jobs:
           cd Flask-agile
       - name: Set up Test env
         run: |
-          cd flask-agile
+          cd Flask-agile
       - name: Run Pytest
         run: |
-          cd flask-agile
+          cd Flask-agile
   build:
     runs-on: ubuntu-latest
     needs: test
