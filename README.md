@@ -34,4 +34,12 @@ docker-compose build
 docker-compose up
 ```
 
+# Running the app
 
+```
+python main.py
+```
+
+# Viewing the app
+
+go to ''' http://127.0.0.1:500 '''
