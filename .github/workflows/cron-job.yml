@@ -25,6 +25,12 @@ jobs:
       - name: Install dependencies
         run: |
           cd Flask-agile
+          pip install flask
+          pip install SQL_alchemy
+          pip install flask_Login
+          pip install flask_bycrpt
+          pip install flask_limiter
+          pip install bleach
       # Scans the Python env setup by setup-python.
       - uses: pyupio/safety@2.3.4
         with:
