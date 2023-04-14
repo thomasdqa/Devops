@@ -40,7 +40,7 @@ To run the application, you will need to build and run the Docker containers. Yo
 docker-compose build
 docker-compose up
 ```
-
+(this step may not be neccessary if running ocally)
 # Running the app
 
 ```
