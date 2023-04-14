@@ -31,7 +31,7 @@ pip install flask SQL_alchemy flask_Login flask_bycrpt flask_limiter bleach
 ```
 ```
 pip install -r requirements.txt
-``
+```
 # Docker
 
 To run the application, you will need to build and run the Docker containers. You can do this by running the following commands in your terminal:
