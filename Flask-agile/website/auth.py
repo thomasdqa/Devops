@@ -17,8 +17,8 @@ MAX_LENGTH = 50
 def login():
     #gets data from POST request
     if request.method == 'POST':
-        email = bleach.clean(Bcrypt(request.form.get('email')))[:MAX_LENGTH]
-        password = bleach.clean(Bcrypt(request.form.get('password')))[:MAX_LENGTH]
+        email = bleach.clean(request.form.get('email'))[:MAX_LENGTH]
+        password = bleach.clean(request.form.get('password'))[:MAX_LENGTH]
 
         user = User.query.filter_by(email=email).first()
         if user:
@@ -55,10 +55,10 @@ def logout():
 def sign_up():
     #gets data from POST request
     if request.method == 'POST':
-        email = bleach.clean(Bcrypt(request.form.get('email')))[:MAX_LENGTH]
-        first_name = bleach.clean(Bcrypt(request.form.get('firstName')))[:MAX_LENGTH]
-        password1 = bleach.clean(Bcrypt(request.form.get('password1')))[:MAX_LENGTH]
-        password2 = bleach.clean(Bcrypt(request.form.get('password2')))[:MAX_LENGTH]
+        email = bleach.clean(request.form.get('email'))[:MAX_LENGTH]
+        first_name = bleach.clean(request.form.get('firstName'))[:MAX_LENGTH]
+        password1 = bleach.clean(request.form.get('password1'))[:MAX_LENGTH]
+        password2 = bleach.clean(request.form.get('password2'))[:MAX_LENGTH]
 
         #authenticates users sign-ip attempts
         user = User.query.filter_by(email=email).first()
